@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 const Page = () => {
   const [data, setData] = useState<any[]>([]);
   const getData = async () => {
-    const res = await fetch("http://localhost:3000/api/request");
+    const res = await fetch("https://check-blog-8grk-5ap0kddjp-shamamadevs-projects.vercel.app//api/request");
     const result = await res.json();
     setData(result.data);
   };
