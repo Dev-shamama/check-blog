@@ -54,3 +54,9 @@ export async function GET() {
 
     return NextResponse.json({ success: true, data });
 }
+
+export async function POST(request) {
+    const req = await request.json();
+    console.log(req);
+    return NextResponse.json({success: true})
+}
