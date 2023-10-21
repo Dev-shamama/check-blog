@@ -10,7 +10,9 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         // const s = JSON.parse(req.body);
-        const receiveData = JSON.parse(req.body);
+        // const receiveData = JSON.parse(req.body);
+        const receiveData = req.body;
+        console.log(receiveData);
 
         await connectDB()
 
@@ -22,6 +24,7 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
 
         return res.status(201).json({ success: true, message: "Created Successfully", data: result, });
+        // return res.status(201).json({ success: true, message: "Created Successfully"});
 
     } catch (error: any) {
         return res.status(500).json({ success: false, message: error.message });
