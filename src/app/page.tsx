@@ -14,13 +14,13 @@ const getData = async () => {
 };
 
 const Page = async () => {
-  // const data = await getData();
+  const data = await getData();
 
   return (
     <>
       <h1>Data Render</h1>
       <BlogPost />
-      {/* {data && data?.data.map((item: any) => <li key={item._id}>{item.title}</li>)} */}
+      {data && data?.data.map((item: any) => <li key={item._id}>{item.title}</li>)}
     </>
   );
 };
