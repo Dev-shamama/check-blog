@@ -1,35 +1,26 @@
-"use client";
+import BlogPost from "@/components/Clients";
 import React, { useEffect, useState } from "react";
 
-const Page = () => {
-  const [data, setData] = useState<any[]>([]);
-  const getData = async () => {
-    const res = await fetch("https://check-blog.vercel.app/api/request", {method: "GET"});
+const getData = async () => {
+  try {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/getdata`, {
+      cache: "no-cache",
+    });
     const result = await res.json();
-    setData(result.data);
-  };
-  useEffect(() => {
-    getData();
-  }, []);
-  
-const submitHandler = async () => {
-  const res = await fetch("https://check-blog.vercel.app/api/request", {
-    method: "POST",
-    body: JSON.stringify({title: "shamamabinshakil"}),
-    headers: {'content-type': 'application/json'}
-  });
-  const result = await res.json();
-  console.log(result)
-}
+    return result.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
 
+const Page = async () => {
+  // const data = await getData();
 
   return (
     <>
       <h1>Data Render</h1>
-      <button onClick={submitHandler}>Click Here!</button>
-      {data && data.map((item: any) => (
-        <li key={item._id}>{item.color_name}</li>
-      ))}
+      <BlogPost />
+      {/* {data && data?.data.map((item: any) => <li key={item._id}>{item.title}</li>)} */}
     </>
   );
 };
