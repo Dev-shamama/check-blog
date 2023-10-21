@@ -10,13 +10,13 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
         }
 
         // const s = JSON.parse(req.body);
-        const { title, description } = JSON.parse(req.body);
+        const receiveData = JSON.parse(req.body);
 
         await connectDB()
 
         const data = new Blog({
-            title,
-            description
+            title: receiveData.title,
+            description: receiveData.description
         });
         const result = await data.save();
 
