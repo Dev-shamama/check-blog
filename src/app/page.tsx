@@ -1,4 +1,3 @@
-import BlogPost from "@/components/Clients";
 import React, { useEffect, useState } from "react";
 
 const getData = async () => {
@@ -15,11 +14,9 @@ const getData = async () => {
 
 const Page = async () => {
   const data = await getData();
-  console.log(data)
   return (
     <>
       <h1>Data Render</h1>
-      <BlogPost />
       {data &&
         data.map((item: any) => {
           return <li key={item._id}>{item.title}</li>;
